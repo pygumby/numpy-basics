@@ -76,3 +76,26 @@ print(a_2.size == math.prod(a_2.shape))  # True
 # Arrays are typically "homogeneous", meaning that they contain elements of only one
 # "data type". The data type is recorded in the `dtype` attribute.
 print(a_2.dtype)  # int64
+
+########################################################################################
+# How to create a basic array                                                          #
+########################################################################################
+print("\nHow to create a basic array\n")
+
+# Besides creating an array from a sequence of elements, you can easily create an array
+# filled with `0`’s:
+print(np.zeros(2))  # [0. 0.]
+
+# Or an array filled with `1`’s:
+print(np.ones(2))  # [1. 1.]
+
+# Or even an empty array! The function `empty` creates an array whose initial content is
+# random. The reason to use `empty` over `zeros` is speed.
+print(np.empty(2))  # [3.14, 42.]
+
+# You can create an array with a range of elements:
+print(np.arange(4))  # [0 1 2 3]
+
+# While the default data type is floating point (`np.float64`), you can explicitly
+# specify which data type you want using the `dtype` keyword.
+print(np.ones(2, dtype=np.int64))  # [1 1]
