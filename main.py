@@ -99,3 +99,34 @@ print(np.arange(4))  # [0 1 2 3]
 # While the default data type is floating point (`np.float64`), you can explicitly
 # specify which data type you want using the `dtype` keyword.
 print(np.ones(2, dtype=np.int64))  # [1 1]
+
+########################################################################################
+# Adding, removing, and sorting elements                                               #
+########################################################################################
+print("\nAdding, removing, and sorting elements\n")
+
+# You can quickly sort the numbers in ascending order with:
+print(np.sort(np.array([2, 1, 5, 3, 7, 4, 6, 8])))
+
+# You can concatenate arrays with `np.concatenate()`.
+a_3 = np.array([1, 2, 3, 4])
+b_1 = np.array([5, 6, 7, 8])
+print(np.concatenate((a_3, b_0)))
+
+x_0 = np.array([[1, 2], [3, 4]])
+print(x_0.ndim)  # 2
+print(x_0.shape)  # (2, 2)
+
+
+y_0 = np.array([[5, 6]])
+print(y_0.ndim)  # 2
+print(y_0.shape)  # (1, 2)
+print(np.concatenate((x_0, y_0), axis=0))
+# [[1 2]
+#  [3 4]
+#  [5 6]]
+
+y_1 = np.array([[5], [6]])
+print(np.concatenate((x_0, y_1), axis=1))
+# [[1 2 5]
+#  [3 4 6]]
