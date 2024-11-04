@@ -83,10 +83,10 @@ print(a_2.dtype)  # int64
 print("\nHow to create a basic array\n")
 
 # Besides creating an array from a sequence of elements, you can easily create an array
-# filled with `0`’s:
+# filled with `0`'s:
 print(np.zeros(2))  # [0. 0.]
 
-# Or an array filled with `1`’s:
+# Or an array filled with `1`'s:
 print(np.ones(2))  # [1. 1.]
 
 # Or even an empty array! The function `empty` creates an array whose initial content is
@@ -130,3 +130,28 @@ y_1 = np.array([[5], [6]])
 print(np.concatenate((x_0, y_1), axis=1))
 # [[1 2 5]
 #  [3 4 6]]
+
+########################################################################################
+# How do you know the shape and size of an array?                                      #
+########################################################################################
+print("\nHow do you know the shape and size of an array?\n")
+
+a_4 = np.array(
+    [
+        [[0, 1, 2, 3], [4, 5, 6, 7]],
+        [[0, 1, 2, 3], [4, 5, 6, 7]],
+        [[0, 1, 2, 3], [4, 5, 6, 7]],
+    ]
+)
+
+# `ndarray.ndim` will tell you the number of axes, or dimensions, of the array`
+print(a_4.ndim)
+
+# `ndarray.size` will tell you the total number of elements of the array. This is the
+# product of the elements of the array's shape.
+print(a_4.size)
+
+# `ndarray.shape` will display a tuple of integers that indicate the number of elements
+# stored along each dimension of the array. If, for example, you have a 2-D array with 2
+# rows and 3 columns, the shape of your array is (2, 3).
+print(a_4.shape)
