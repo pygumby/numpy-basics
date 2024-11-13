@@ -155,3 +155,51 @@ print(a_4.size)
 # stored along each dimension of the array. If, for example, you have a 2-D array with 2
 # rows and 3 columns, the shape of your array is (2, 3).
 print(a_4.shape)
+
+########################################################################################
+# How to convert a 1D array into a 2D array                                            #
+########################################################################################
+print("\nHow to convert a 1D array into a 2D array\n")
+
+# Using `np.newaxis` will increase the dimensions of your array by one dimension when
+# used once. This means that a 1D array will become a 2D array, a 2D array will become a
+# 3D array, and so on.
+a_5 = np.array([1, 2, 3, 4, 5, 6])
+print(a_5.shape)  # (6,)
+
+a_6 = a_5[np.newaxis, :]
+print(a_6.shape)  # (1, 6)
+print(a_6)  # [[1 2 3 4 5 6]]
+
+# You can explicitly convert a 1D array to either a row vector or a column vector using
+# `np.newaxis`.
+row_vector = a_5[np.newaxis, :]
+print(row_vector.shape)  # (1, 6)
+print(row_vector)  # [[1 2 3 4 5 6]]
+
+col_vector = a_5[:, np.newaxis]
+print(col_vector.shape)  # (6, 1)
+print(col_vector)
+# [[1]
+#  [2]
+#  [3]
+#  [4]
+#  [5]
+#  [6]]
+
+# You can also expand an array by inserting a new axis at a specified position with
+# `np.expand_dims`. You can use `np.expand_dims`` to add an axis at index position 1
+# with:
+b_2 = np.expand_dims(a_5, axis=1)
+print(b_2.shape)  # (6, 1)
+print(b_2)
+# [[1]
+#  [2]
+#  [3]
+#  [4]
+#  [5]
+#  [6]]
+
+c_0 = np.expand_dims(a_5, axis=0)
+print(c_0.shape)  # (1, 6)
+print(c_0)  # [[1 2 3 4 5 6]]
