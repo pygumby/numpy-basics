@@ -203,3 +203,69 @@ print(b_2)
 c_0 = np.expand_dims(a_5, axis=0)
 print(c_0.shape)  # (1, 6)
 print(c_0)  # [[1 2 3 4 5 6]]
+
+########################################################################################
+# Indexing and slicing                                                                 #
+########################################################################################
+print("\nIndexing and slicing\n")
+
+# You can index and slice NumPy arrays in the same ways you can slice Python lists.
+data = np.array([1, 2, 3])
+
+print(data[1])  # 2
+print(data[0:2])  # [1 2]
+print(data[1:])  # [2 3]
+print(data[-2:])  # [2 3]
+
+# If you want to select values from your array that fulfill certain conditions, it's
+# straightforward with NumPy.
+a_7 = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+
+# You can easily print all of the values in the array that are less than 5.
+print(a_7[a_7 < 5])  # [1 2 3 4]
+
+# You can also select numbers that are equal to or greater than 5, and use that
+# condition to index an array.
+five_up = a_7 >= 5
+print(five_up)
+# [[False False False False]
+#  [ True  True  True  True]
+#  [ True  True  True  True]]
+print(a_7[five_up])
+# [ 5  6  7  8  9 10 11 12]
+
+# You can select elements that are divisible by 2:
+divisible_by_2 = a_7[a_7 % 2 == 0]
+print(divisible_by_2)  # [ 2  4  6  8 10 12]
+
+# Or you can select elements that satisfy two conditions using the `&` and `|`
+# operators:
+c_1 = a_7[(a_7 > 2) & (a_7 < 11)]
+print(c_1)  # [ 3  4  5  6  7  8  9 10]
+
+# You can also use `np.nonzero()` to select elements or indices from an array. In this
+# example, a tuple of arrays is returned: one for each dimension. The first array
+# represents the row indices where these values are found, and the second array
+# represents the column indices where the values are found.
+b_3 = np.nonzero(a_7 < 5)
+print(b_3)  # (array([0, 0, 0, 0]), array([0, 1, 2, 3]))
+
+# If you want to generate a list of coordinates where the elements exist, you can zip
+# the arrays, iterate over the list of coordinates, and print them.
+list_of_coordinates = list(zip(b_3[0], b_3[1]))
+for coord in list_of_coordinates:
+    print(coord)
+# (np.int64(0), np.int64(0))
+# (np.int64(0), np.int64(1))
+# (np.int64(0), np.int64(2))
+# (np.int64(0), np.int64(3))
+
+# You can also use `np.nonzero()` to print the elements in an array that are less than 5
+# with:
+print(a_7[b_3])  # [1 2 3 4]
+
+# If the element you're looking for doesn't exist in the array, then the returned array
+# of indices will be empty.
+not_there = np.nonzero(a_7 == 42)
+print(not_there)
+# (array([], dtype=int64), array([], dtype=int64))
