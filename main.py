@@ -300,7 +300,7 @@ print(np.hstack((a_9, a_10)))
 # as the original array (a shallow copy). Views are an important NumPy concept! NumPy
 # functions, as well as operations like indexing and slicing, will return views whenever
 # possible. This saves memory and is faster (no copy of the data has to be made).
-# However it’s important to be aware of this - modifying data in a view also modifies
+# However it's important to be aware of this - modifying data in a view also modifies
 # the original array!
 a_11 = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
 
@@ -317,3 +317,24 @@ print(a_11)
 # Using the copy method will make a complete copy of the array and its data (a deep
 # copy).
 b_5 = a_11.copy()
+
+########################################################################################
+# Basic array operations                                                               #
+########################################################################################
+print("\nBasic array operations\n")
+
+data = np.array([1, 2])
+ones = np.ones(2, dtype=int)
+print(data + ones)  # [2 3]
+print(data - ones)  # [0 1]
+print(data * data)  # [1 4]
+print(data / data)  # [1. 1.]
+
+# If you want to find the sum of the elements in an array, you'd use `sum()`.
+a_12 = np.array([1, 2, 3, 4])
+print(a_12.sum())
+
+# To add the rows or the columns in a 2D array, you would specify the axis.
+b_6 = np.array([[1, 1], [2, 2]])
+print(b_6.sum(axis=0))  # [3 3]
+print(b_6.sum(axis=1))  # [2 4]
