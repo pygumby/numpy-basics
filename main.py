@@ -269,3 +269,51 @@ print(a_7[b_3])  # [1 2 3 4]
 not_there = np.nonzero(a_7 == 42)
 print(not_there)
 # (array([], dtype=int64), array([], dtype=int64))
+
+########################################################################################
+# How to create an array from existing data                                            #
+########################################################################################
+print("\nHow to create an array from existing data\n")
+
+a_8 = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+# You can create a new array from a section of your array any time by specifying where
+# you want to slice your array.
+arr_0 = a_8[3:8]
+print(arr_0)  # [4 5 6 7 8]
+
+# You can also stack two existing arrays, both vertically and horizontally.
+a_9 = np.array([[1, 1], [2, 2]])
+a_10 = np.array([[3, 3], [4, 4]])
+
+print(np.vstack((a_9, a_10)))
+# [[1 1]
+#  [2 2]
+#  [3 3]
+#  [4 4]]
+
+print(np.hstack((a_9, a_10)))
+# [[1 1 3 3]
+#  [2 2 4 4]]
+
+# You can use the `view` method to create a new array object that looks at the same data
+# as the original array (a shallow copy). Views are an important NumPy concept! NumPy
+# functions, as well as operations like indexing and slicing, will return views whenever
+# possible. This saves memory and is faster (no copy of the data has to be made).
+# However it’s important to be aware of this - modifying data in a view also modifies
+# the original array!
+a_11 = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+
+b_4 = a_11[0, :]
+print(b_4)  # [1 2 3 4]
+
+b_4[0] = 99
+print(b_4)  # [99  2  3  4]
+print(a_11)
+# [[99  2  3  4]
+#  [ 5  6  7  8]
+#  [ 9 10 11 12]]
+
+# Using the copy method will make a complete copy of the array and its data (a deep
+# copy).
+b_5 = a_11.copy()
