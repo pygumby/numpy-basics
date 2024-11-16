@@ -210,12 +210,12 @@ print(c_0)  # [[1 2 3 4 5 6]]
 print("\nIndexing and slicing\n")
 
 # You can index and slice NumPy arrays in the same ways you can slice Python lists.
-data = np.array([1, 2, 3])
+data_0 = np.array([1, 2, 3])
 
-print(data[1])  # 2
-print(data[0:2])  # [1 2]
-print(data[1:])  # [2 3]
-print(data[-2:])  # [2 3]
+print(data_0[1])  # 2
+print(data_0[0:2])  # [1 2]
+print(data_0[1:])  # [2 3]
+print(data_0[-2:])  # [2 3]
 
 # If you want to select values from your array that fulfill certain conditions, it's
 # straightforward with NumPy.
@@ -323,12 +323,12 @@ b_5 = a_11.copy()
 ########################################################################################
 print("\nBasic array operations\n")
 
-data = np.array([1, 2])
+data_1 = np.array([1, 2])
 ones = np.ones(2, dtype=int)
-print(data + ones)  # [2 3]
-print(data - ones)  # [0 1]
-print(data * data)  # [1 4]
-print(data / data)  # [1. 1.]
+print(data_1 + ones)  # [2 3]
+print(data_1 - ones)  # [0 1]
+print(data_1 * data_1)  # [1 4]
+print(data_1 / data_1)  # [1. 1.]
 
 # If you want to find the sum of the elements in an array, you'd use `sum()`.
 a_12 = np.array([1, 2, 3, 4])
@@ -338,3 +338,20 @@ print(a_12.sum())
 b_6 = np.array([[1, 1], [2, 2]])
 print(b_6.sum(axis=0))  # [3 3]
 print(b_6.sum(axis=1))  # [2 4]
+
+########################################################################################
+# Broadcasting                                                                         #
+########################################################################################
+print("\nBroadcasting\n")
+
+# There are times when you might want to carry out an operation between an array and a
+# single number (also called an operation between a vector and a scalar) or between
+# arrays of two different sizes.
+
+# NumPy understands that the following multiplication should happen with each cell. That
+# concept is called broadcasting. Broadcasting is a mechanism that allows NumPy to
+# perform operations on arrays of different shapes. The dimensions of your array must be
+# compatible, for example, when the dimensions of both arrays are equal or when one of
+# them is 1.
+data_2 = np.array([1.0, 2.0])
+print(data_2 * 1.6)  # [1.6 3.2]
