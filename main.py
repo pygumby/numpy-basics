@@ -355,3 +355,31 @@ print("\nBroadcasting\n")
 # them is 1.
 data_2 = np.array([1.0, 2.0])
 print(data_2 * 1.6)  # [1.6 3.2]
+
+########################################################################################
+# More useful array operations                                                         #
+########################################################################################
+print("\nMore useful array operations\n")
+
+# NumPy also performs aggregation functions. In addition to `min`, `max`, and `sum`, you
+# can easily run `mean` to get the average, `prod` to get the result of multiplying the
+# elements together, `std` to get the standard deviation, and more.
+data_3 = np.array([1.0, 2.0])
+print(data_3.max())  # 2.0
+print(data_3.min())  # 1.0
+print(data_3.sum())  # 3.0
+
+# Let's start with this array, called `a`:
+a_13 = np.array(
+    [
+        [0.45053314, 0.17296777, 0.34376245, 0.5510652],
+        [0.54627315, 0.05093587, 0.40067661, 0.55645993],
+        [0.12697628, 0.82485143, 0.26590556, 0.56917101],
+    ]
+)
+print(a_13.sum())  # 4.8595784
+print(a_13.min())  # 0.05093587
+
+# You can specify on which axis you want the aggregation function to be computed. For
+# example, you can find the minimum value within each column by specifying `axis=0`.
+print(a_13.min(axis=0))  # [0.12697628 0.05093587 0.26590556 0.5510652 ]
