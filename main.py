@@ -468,3 +468,49 @@ print(rng.random((3, 2)))
 # [[0.70594248 0.02637369]
 #  [0.85647803 0.11083294]
 #  [0.07493274 0.36550293]]
+
+########################################################################################
+# How to get unique items and counts                                                   #
+########################################################################################
+print("\nHow to get unique items and counts\n")
+
+a_14 = np.array([11, 11, 12, 13, 14, 15, 16, 17, 12, 13, 11, 14, 18, 19, 20])
+
+# You can find the unique elements in an array easily with `np.unique`.
+unique_values_0 = np.unique(a_14)
+print(unique_values_0)  # [11 12 13 14 15 16 17 18 19 20]
+
+# To get the indices of unique values in a NumPy array (an array of first index
+# positions of unique values in the array), just pass the `return_index` argument in
+# `np.unique()` as well as your array.
+unique_values_1, indices_list = np.unique(a_14, return_index=True)
+print(indices_list)  # [ 0  2  3  4  5  6  7 12 13 14]
+
+# You can pass the `return_counts` argument in `np.unique()` along with your array to
+# get the frequency count of unique values in a NumPy array.
+unique_values_2, occurrence_count = np.unique(a_14, return_counts=True)
+print(occurrence_count)  # [3 2 2 2 1 1 1 1 1 1]
+
+# This also works with 2D arrays! If the axis argument isn't passed, your 2D array will
+# be flattened.
+a_2d = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [1, 2, 3, 4]])
+print(np.unique(a_2d))  # [ 1  2  3  4  5  6  7  8  9 10 11 12]
+
+# If you want to get the unique rows or columns, make sure to pass the axis argument. To
+# find the unique rows, specify `axis=0` and for columns, specify `axis=1`.
+unique_rows = np.unique(a_2d, axis=0)
+print(unique_rows)
+# [[ 1  2  3  4]
+#  [ 5  6  7  8]
+#  [ 9 10 11 12]]
+
+# To get the unique rows, index position, and occurrence count, you can use:
+unique_rows, indices, occurrence_count = np.unique(
+    a_2d, axis=0, return_counts=True, return_index=True
+)
+print(unique_rows)
+# [[ 1  2  3  4]
+#  [ 5  6  7  8]
+#  [ 9 10 11 12]]
+print(indices)  # [0 1 2]
+print(occurrence_count)  # [2 1 1]
