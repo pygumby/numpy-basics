@@ -383,3 +383,88 @@ print(a_13.min())  # 0.05093587
 # You can specify on which axis you want the aggregation function to be computed. For
 # example, you can find the minimum value within each column by specifying `axis=0`.
 print(a_13.min(axis=0))  # [0.12697628 0.05093587 0.26590556 0.5510652 ]
+
+########################################################################################
+# Creating matrices                                                                    #
+########################################################################################
+print("\nCreating matrices\n")
+
+# You can pass Python lists of lists to create a 2-D array (or "matrix") to represent
+# them in NumPy.
+
+data_4 = np.array([[1, 2], [3, 4], [5, 6]])
+print(data_4)
+# [[1 2]
+#  [3 4]
+#  [5 6]]
+
+# Indexing and slicing operations are useful when you're manipulating matrices:
+print(data_4[0, 1])  # 2
+print(data_4[1:3])
+# [[3 4]
+#  [5 6]]
+print(data_4[0:2, 0])  # [1 3]
+
+# You can aggregate matrices the same way you aggregated vectors:
+print(data_4.max())  # 6
+print(data_4.min())  # 1
+print(data_4.sum())  # 21
+
+# You can aggregate all the values in a matrix and you can aggregate them across columns
+# or rows using the `axis` parameter.
+data_5 = np.array([[1, 2], [5, 3], [4, 6]])
+print(data_5)
+# [[1 2]
+#  [5 3]
+#  [4 6]]
+print(data_5.max(axis=0))  # [5 6]
+print(data_5.max(axis=1))  # [2 5 6]
+
+# You can do these arithmetic operations on matrices of different sizes, but only if one
+# matrix has only one column or one row. In this case, NumPy will use its broadcast
+# rules for the operation.
+data_6 = np.array([[1, 2], [3, 4], [5, 6]])
+ones_row = np.array([1, 1])
+print(data_6 + ones_row)
+# [[2 3]
+#  [4 5]
+#  [6 7]]
+
+# Be aware that when NumPy prints N-dimensional arrays, the last axis is looped over the
+# fastest while the first axis is the slowest.
+print(np.ones((4, 3, 2)))
+# [[[1. 1.]
+#   [1. 1.]
+#   [1. 1.]]
+#  [[1. 1.]
+#   [1. 1.]
+#   [1. 1.]]
+#  [[1. 1.]
+#   [1. 1.]
+#   [1. 1.]]
+#  [[1. 1.]
+#   [1. 1.]
+#   [1. 1.]]]
+
+# There are often instances where we want NumPy to initialize the values of an array.
+# NumPy offers functions like `ones()` and `zeros()`, and the `random.Generator` class
+# for random number generation for that.
+print(np.ones(3))  # [1. 1. 1.]
+print(np.zeros(3))  # [0. 0. 0.]
+rng = np.random.default_rng()
+print(rng.random(3))  # [0.04684997 0.89084346 0.15499562]
+
+# You can also use `ones()`, `zeros()`, and `random()` to create a 2D array if you give
+# them a tuple describing the dimensions of the matrix:
+print(np.ones((3, 2)))
+# [[1. 1.]
+#  [1. 1.]
+#  [1. 1.]]
+print(np.zeros((3, 2)))
+# [[0. 0.]
+#  [0. 0.]
+#  [0. 0.]]
+print(rng.random((3, 2)))
+# [[0.70594248 0.02637369]
+#  [0.85647803 0.11083294]
+#  [0.07493274 0.36550293]]
