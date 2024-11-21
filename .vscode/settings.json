@@ -1,9 +1,7 @@
 {
     // Font
-    "editor.fontFamily": "Berkeley Mono, JetBrains Mono, Menlo, monospace",
-    "editor.fontSize": 13,
-    "terminal.integrated.fontFamily": "Berkeley Mono, JetBrains Mono, Menlo, monospace",
-    "terminal.integrated.fontSize": 13,
+    "editor.fontFamily": "JetBrains Mono, Menlo, monospace",
+    "terminal.integrated.fontFamily": "JetBrains Mono, Menlo, monospace",
 
     // Indentation
     "editor.detectIndentation": false,
